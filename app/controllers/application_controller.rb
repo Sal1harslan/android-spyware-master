@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         "LHOST" => "0.0.0.0",
         "LPORT" => 4444,
       }
-      job = rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
+      rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
       session = rpc.call("session.list").keys[0]
       puts rpc.call("session.meterpreter_write", session, command)
       sleep 4
@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
       commandOutput = "Operation Failed"
       puts e
       puts "MSF RPC Exception"
-    rescue => exception
+    rescue 
       puts "Starting MSF process failed."
     end
     puts commandOutput
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
         "LHOST" => "0.0.0.0",
         "LPORT" => 4444,
       }
-      job = rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
+      rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
       session = rpc.call("session.list").keys[0]
 
       puts rpc.call("session.meterpreter_session_detach", session)
@@ -167,7 +167,7 @@ class ApplicationController < ActionController::Base
         "LHOST" => "0.0.0.0",
         "LPORT" => 4444,
       }
-      job = rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
+      rpc.call("module.execute", "exploit", "multi/handler", payloadOptions)
       sessions = rpc.call("session.list")
       @@isMsfConnected = sessions.size > 0 ? true : false
     rescue Msf::RPC::ServerException => e

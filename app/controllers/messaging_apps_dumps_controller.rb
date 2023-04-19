@@ -25,9 +25,9 @@ class MessagingAppsDumpsController < InheritedResources::Base
 
   def uninstall_whatsapp_for_downgrade
     begin
-      commandOutput = [run_adb_command("shell pm uninstall -k com.whatsapp")]
+      [run_adb_command("shell pm uninstall -k com.whatsapp")]
     rescue
-      commandOutput = "Operation Failed"
+      "Operation Failed"
       puts "Error uninstalling whatsapp."
     end
     respond_to do |format|
@@ -41,9 +41,9 @@ class MessagingAppsDumpsController < InheritedResources::Base
 
   def install_old_apk
     begin
-      commandOutput = run_adb_command("install tools/WhatsApp-v2.11.431-AndroidBucket.com.apk")
+      run_adb_command("install tools/WhatsApp-v2.11.431-AndroidBucket.com.apk")
     rescue
-      commandOutput = "Operation Failed"
+      "Operation Failed"
       puts "Error installing old whatsapp version."
     end
     respond_to do |format|
@@ -62,9 +62,9 @@ class MessagingAppsDumpsController < InheritedResources::Base
         run_adb_command("shell input keyevent 82")
         run_adb_command("shell input tap 521 1130")
       }
-      commandOutput = run_adb_command("backup -apk com.whatsapp -f files/dumps/whatsapp/whatsapp_backup.ab")
+      run_adb_command("backup -apk com.whatsapp -f files/dumps/whatsapp/whatsapp_backup.ab")
     rescue
-      commandOutput = "Operation Failed"
+      "Operation Failed"
       puts "Error performing ADB backup."
     end
     respond_to do |format|
@@ -108,7 +108,7 @@ class MessagingAppsDumpsController < InheritedResources::Base
 
   def pull_whatsapp_db
     begin
-      commandOutput = run_adb_command("pull /sdcard/WhatsApp/Databases/msgstore.db.crypt12 files/dumps/whatsapp/msgstore.db.crypt12")
+      run_adb_command("pull /sdcard/WhatsApp/Databases/msgstore.db.crypt12 files/dumps/whatsapp/msgstore.db.crypt12")
     rescue
       commandOutput = "Operation Failed"
     end
