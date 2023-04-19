@@ -4517,42 +4517,42 @@ var Expr = Sizzle.selectors = {
 			var attr = elem.getAttribute( "type" ), type = elem.type;
 			// IE6 and 7 will map elem.type to 'text' for new HTML5 types (search, etc) 
 			// use getAttribute instead to test this case
-			return elem.nodeName.toLowerCase() === "input" && "text" === type && ( attr === type || attr === null );
+			return elem.nodeName.toLowerCase() === "input" && type === "text" && ( attr === type || attr === null );
 		},
 
 		radio: function( elem ) {
-			return elem.nodeName.toLowerCase() === "input" && "radio" === elem.type;
+			return elem.nodeName.toLowerCase() === "input" && elem.type === "radio";
 		},
 
 		checkbox: function( elem ) {
-			return elem.nodeName.toLowerCase() === "input" && "checkbox" === elem.type;
+			return elem.nodeName.toLowerCase() === "input" && elem.type === "checkbox";
 		},
 
 		file: function( elem ) {
-			return elem.nodeName.toLowerCase() === "input" && "file" === elem.type;
+			return elem.nodeName.toLowerCase() === "input" && elem.type === "file";
 		},
 
 		password: function( elem ) {
-			return elem.nodeName.toLowerCase() === "input" && "password" === elem.type;
+			return elem.nodeName.toLowerCase() === "input" && elem.type === "password";
 		},
 
 		submit: function( elem ) {
 			var name = elem.nodeName.toLowerCase();
-			return (name === "input" || name === "button") && "submit" === elem.type;
+			return (name === "input" || name === "button") && elem.type === "submit";
 		},
 
 		image: function( elem ) {
-			return elem.nodeName.toLowerCase() === "input" && "image" === elem.type;
+			return elem.nodeName.toLowerCase() === "input" && elem.type === "image";
 		},
 
 		reset: function( elem ) {
 			var name = elem.nodeName.toLowerCase();
-			return (name === "input" || name === "button") && "reset" === elem.type;
+			return (name === "input" || name === "button") && elem.type === "reset";
 		},
 
 		button: function( elem ) {
 			var name = elem.nodeName.toLowerCase();
-			return name === "input" && "button" === elem.type || name === "button";
+			return name === "input" && elem.type === "button" || name === "button";
 		},
 
 		input: function( elem ) {
